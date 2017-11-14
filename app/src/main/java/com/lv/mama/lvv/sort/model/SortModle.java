@@ -1,7 +1,9 @@
 package com.lv.mama.lvv.sort.model;
 
 import com.lv.mama.lvv.sort.bean.DataleftBean;
-import com.lv.mama.lvv.utils.RetroFactory;
+import com.lv.mama.lvv.utils.RetroFactorySort;
+
+import java.util.List;
 
 import rx.Observable;
 import rx.Observer;
@@ -13,9 +15,21 @@ import rx.schedulers.Schedulers;
  */
 
 public class SortModle implements ISortMode {
+
+    private List<DataleftBean.DatasBean.ClassListBean> class_list;
+
+    public onfinish onfinish;
+    public interface onfinish{
+        void onfinishleft(List<DataleftBean.DatasBean.ClassListBean> class_list);
+    }
+
+    public void setOnfinish(SortModle.onfinish onfinish) {
+        this.onfinish = onfinish;
+    }
+
     @Override
     public void getUrl(String url) {
-        Observable<DataleftBean> sortLeftBean = RetroFactory.getInstance().getSortLeftBean(url);
+        Observable<DataleftBean> sortLeftBean = RetroFactorySort.getInstance().getSortLeftBean(url);
         sortLeftBean.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<DataleftBean>() {
@@ -31,8 +45,10 @@ public class SortModle implements ISortMode {
 
                     @Override
                     public void onNext(DataleftBean dataleftBean) {
-
+                        class_list = dataleftBean.getDatas().getClass_list();
+                        onfinish.onfinishleft(class_list);
                     }
                 });
     }
+
 }

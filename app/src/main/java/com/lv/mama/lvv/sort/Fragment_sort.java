@@ -13,6 +13,12 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 import com.lv.mama.lvv.R;
+import com.lv.mama.lvv.sort.adapter.MyAdapter_left;
+import com.lv.mama.lvv.sort.bean.DataleftBean;
+import com.lv.mama.lvv.sort.presenter.SortPresenter;
+import com.lv.mama.lvv.sort.view.ISortView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,19 +29,23 @@ import butterknife.Unbinder;
  * Created by 卢总 on 2017/11/9.
  */
 
-public class Fragment_sort extends Fragment {
+public class Fragment_sort extends Fragment implements ISortView{
 
     @BindView(R.id.type_rvleft)
     RecyclerView rv_left;
     @BindView(R.id.type_rvright)
     RecyclerView rv_right;
     Unbinder unbinder;
+
+    String Sortlefturl="mobile/index.php?act=goods_class";
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sort, null);
         unbinder = ButterKnife.bind(this, view);
 
+        SortPresenter sortPresenter = new SortPresenter(this);
+        sortPresenter.setSortLeftUrl(Sortlefturl);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
         //得到WindowManager
         WindowManager windowManager = getActivity().getWindowManager();
@@ -59,5 +69,11 @@ public class Fragment_sort extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void getleft(List<DataleftBean.DatasBean.ClassListBean> class_list) {
+        MyAdapter_left myAdapter_left = new MyAdapter_left(getContext(), class_list);
+        rv_left.setAdapter(myAdapter_left);
     }
 }
