@@ -1,6 +1,7 @@
 package com.lv.mama.lvv.sort.view;
 
 import com.lv.mama.lvv.sort.bean.DataleftBean;
+import com.lv.mama.lvv.sort.bean.DatarightBean;
 
 import java.util.List;
 
@@ -10,4 +11,5 @@ import java.util.List;
 
 public interface ISortView {
     void getleft(List<DataleftBean.DatasBean.ClassListBean> class_list);
+    void getRight(List<DatarightBean.DatasBean.ClassListBean> class_right);
 }

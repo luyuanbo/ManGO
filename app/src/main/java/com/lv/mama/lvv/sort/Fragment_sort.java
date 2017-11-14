@@ -14,7 +14,9 @@ import android.widget.LinearLayout;
 
 import com.lv.mama.lvv.R;
 import com.lv.mama.lvv.sort.adapter.MyAdapter_left;
+import com.lv.mama.lvv.sort.adapter.MyAdapter_right;
 import com.lv.mama.lvv.sort.bean.DataleftBean;
+import com.lv.mama.lvv.sort.bean.DatarightBean;
 import com.lv.mama.lvv.sort.presenter.SortPresenter;
 import com.lv.mama.lvv.sort.view.ISortView;
 
@@ -38,13 +40,16 @@ public class Fragment_sort extends Fragment implements ISortView{
     Unbinder unbinder;
 
     String Sortlefturl="mobile/index.php?act=goods_class";
+    private SortPresenter sortPresenter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sort, null);
         unbinder = ButterKnife.bind(this, view);
 
-        SortPresenter sortPresenter = new SortPresenter(this);
+        sortPresenter = new SortPresenter(this);
+        //得到左边数据
         sortPresenter.setSortLeftUrl(Sortlefturl);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
         //得到WindowManager
@@ -71,9 +76,36 @@ public class Fragment_sort extends Fragment implements ISortView{
         unbinder.unbind();
     }
 
+    /**
+     * 设置左边的数据
+     * @param class_list
+     */
     @Override
-    public void getleft(List<DataleftBean.DatasBean.ClassListBean> class_list) {
-        MyAdapter_left myAdapter_left = new MyAdapter_left(getContext(), class_list);
+    public void getleft(final List<DataleftBean.DatasBean.ClassListBean> class_list) {
+        final MyAdapter_left myAdapter_left = new MyAdapter_left(getActivity(), class_list);
+        //子条目点击监听
+        myAdapter_left.setRecycleViewItemClickListener(new MyAdapter_left.OnRecycleViewItemClickListener() {
+            @Override
+            public void recycleViewItemClickListener(int position, View view, RecyclerView.ViewHolder viewHolder) {
+
+                myAdapter_left.setTagPosition(position);
+                myAdapter_left.notifyDataSetChanged();
+
+                sortPresenter.setSortRightUrl(Sortlefturl,class_list.get(position).getGc_id());
+            }
+        });
         rv_left.setAdapter(myAdapter_left);
     }
+
+    /**
+     * 设置右边得数据
+     * @param class_right
+     */
+    @Override
+    public void getRight(List<DatarightBean.DatasBean.ClassListBean> class_right) {
+        MyAdapter_right myAdapter_right = new MyAdapter_right(getActivity(), class_right);
+        rv_right.setAdapter(myAdapter_right);
+    }
+
+
 }
