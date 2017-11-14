@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/my_image_view"
+            fresco:placeholderImage="@mipmap/ic_launcher"
+            style="@style/home_classfiled_img"
+
+            />
+
+        <TextView
+            android:id="@+id/home_classifiled_text1"
+
+            style="@style/home_classifiled_text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/my_image_view2"
+            fresco:placeholderImage="@mipmap/ic_launcher"
+            style="@style/home_classfiled_img"/>
+
+        <TextView
+            android:id="@+id/home_classifiled_text2"
+            style="@style/home_classifiled_text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/my_image_view3"
+            fresco:placeholderImage="@mipmap/ic_launcher"
+            style="@style/home_classfiled_img"
+            />
+
+        <TextView
+            android:id="@+id/home_classifiled_text3"
+            style="@style/home_classifiled_text" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/my_image_view4"
+            fresco:placeholderImage="@mipmap/ic_launcher"
+           style="@style/home_classfiled_img"
+            />
+
+        <TextView
+            android:id="@+id/home_classifiled_text4"
+            style="@style/home_classifiled_text" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

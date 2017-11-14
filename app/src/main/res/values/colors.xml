@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="nav">#5D646F</color>
+    <color name="main">#FF5001</color>
+    <color name="mainAdd">#DD3000</color>
+
+    <color name="white">#ffffff</color>
+    <color name="colorWhite">#FFFDFB</color>
+    <color name="colorWhite2">#F9F9F9</color>
+    <color name="colorWhite3">#FFFFFF</color>
+    <color name="colorBorder">#A1A1A1</color>
+    <color name="colorPblBackground">#A1A1A4</color>
+    <color name="colorPrice">#FF7001</color>
+    <!-- 亮粉红色 -->
+    <color name="orange">#fd7903</color>
+</resources>

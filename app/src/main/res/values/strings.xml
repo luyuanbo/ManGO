@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Lvv</string>
+
+    <string name="app_a">商品：0</string>
+    <string name="app_b">店铺：0</string>
+    <string name="app_c">我的足迹</string>
+    <string name="app_login">未登录</string>
+    <string name="app_FullOrder">全部订单</string>
+    <string name="app_MyProperty">我的财产</string>
+    <string name="app_Address">收货地址</string>
+    <string name="app_Settings">系统设置</string>
+    <string name="app_Fk">未付款</string>
+    <string name="app_Fh">待发货</string>
+    <string name="app_Sh">待收货</string>
+    <string name="app_Pj">待评价</string>
+    <string name="app_fK">预付款</string>
+    <string name="app_cZ">充值卡</string>
+    <string name="app_dJ">代金券</string>
+    <string name="app_hB">红包</string>
+    <string name="re_btn">注册</string>
+    <string name="re_Username">用户名</string>
+    <string name="re_PassWord">密码</string>
+    <string name="re_PassWord2">确定密码</string>
+    <string name="re_email">邮箱</string>
+    <string name="activityHot">热门活动</string>
+    <string name="activityHot2">热门专题</string>
+    <string name="home_classifiled">ssss</string>
+</resources>

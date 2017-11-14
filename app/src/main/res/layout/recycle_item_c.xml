@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:id="@+id/tvc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="热门抢购"
+        />
+    <cn.iwgang.countdownview.CountdownView
+        android:layout_marginLeft="20dp"
+        android:id="@+id/countdownView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:isHideTimeBackground="false"
+        app:timeBgColor="#f5f5f5"
+        app:isShowDay="true"
+        app:isShowHour="true"
+        app:isShowMinute="true"
+        app:isShowSecond="true"
+        app:timeTextColor="#000"
+        app:timeTextSize="14sp"
+        app:suffixGravity="center"
+        app:suffixTextColor="#7B3A94"
+        app:suffixTextSize="12sp"
+        app:suffixDay="天"
+        app:suffixHour="时"
+        app:suffixMinute="分"
+        app:suffixSecond="秒"
+        android:layout_centerInParent="true"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        >
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/home_qg_img"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            fresco:placeholderImage="@mipmap/ic_launcher"
+            />
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/home_qg_img2"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            fresco:placeholderImage="@mipmap/ic_launcher"
+            />
+    </LinearLayout>
+
+    <!-- <android.support.v7.widget.RecyclerView
+    android:id="@+id/home_recycler_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"/>-->
+
+
+</LinearLayout>
