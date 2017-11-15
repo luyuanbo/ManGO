@@ -10,9 +10,15 @@ import android.widget.TextView;
 
 import com.lv.mama.lvv.R;
 import com.lv.mama.lvv.sort.bean.DatarightBean;
+import com.lv.mama.lvv.sort.bean.DateGridBean;
+import com.lv.mama.lvv.utils.RetroFactorySort;
 
 import java.util.List;
 
+import rx.Observable;
+import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 
 /**
@@ -24,7 +30,7 @@ import java.util.List;
 public class MyAdapter_right extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private Context context;
     private List<DatarightBean.DatasBean.ClassListBean> list;
-
+    String url="mobile/index.php?act=goods_class";
     public MyAdapter_right(Context context, List<DatarightBean.DatasBean.ClassListBean> list) {
         this.context = context;
         this.list = list;
@@ -43,7 +49,26 @@ public class MyAdapter_right extends RecyclerView.Adapter<RecyclerView.ViewHolde
         final MyLeftViewHolder myHolder = new MyLeftViewHolder(holder.itemView);
         //设置标题
         myHolder.tv_left_type.setText(list.get(position).getGc_name());
-        //myHolder.gv.setAdapter(new MyAdapter_TypeGridView(context,));
+        Observable<DateGridBean> gridUrl = RetroFactorySort.getInstance().getSortGrid(url+"&gc_id=" + list.get(position).getGc_id());
+        gridUrl.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<DateGridBean>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(DateGridBean dateGridBean) {
+                        myHolder.gv.setAdapter(new MyAdapter_TypeGridView(context,dateGridBean.getDatas().getClass_list()));
+                    }
+                });
+
 
     }
 

@@ -38,5 +38,5 @@ public interface ApiServer {
     Observable<DatarightBean> getSortRight(@Url String url, @Query("gc_id") String gc_id);
 
     @GET
-    Observable<DateGridBean> getSortGrid(@Url String url, @Query("gc_id") String gc_id,@Query("gc_name") String gc_name);
+    Observable<DateGridBean> getSortGrid(@Url String url);
 }

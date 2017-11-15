@@ -8,5 +8,5 @@ public interface ISortMode {
 
     void getUrl(String url);
     void getRigthUrl(String url,String gc_id);
-    void getAbapterUrl(String url,String gc_id,String gc_name);
+
 }

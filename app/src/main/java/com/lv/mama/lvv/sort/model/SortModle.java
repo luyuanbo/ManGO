@@ -2,7 +2,6 @@ package com.lv.mama.lvv.sort.model;
 
 import com.lv.mama.lvv.sort.bean.DataleftBean;
 import com.lv.mama.lvv.sort.bean.DatarightBean;
-import com.lv.mama.lvv.sort.bean.DateGridBean;
 import com.lv.mama.lvv.utils.RetroFactorySort;
 
 import java.util.List;
@@ -22,13 +21,11 @@ public class SortModle implements ISortMode {
     private List<DataleftBean.DatasBean.ClassListBean> class_list;
 
     private List<DatarightBean.DatasBean.ClassListBean> class_right;
-    private List<DateGridBean.DatasBean.ClassListBean> gridList;
     public onfinish onfinish;
 
     public interface onfinish{
         void onfinishleft(List<DataleftBean.DatasBean.ClassListBean> class_list);
         void onFinishRight(List<DatarightBean.DatasBean.ClassListBean> class_right);
-        void onFinishGrid(List<DateGridBean.DatasBean.ClassListBean> gridList);
     }
 
     public void setOnfinish(SortModle.onfinish onfinish) {
@@ -88,36 +85,6 @@ public class SortModle implements ISortMode {
                         class_right = datarightBean.getDatas().getClass_list();
                         onfinish.onFinishRight(class_right);
 
-                    }
-                });
-    }
-
-    /**
-     * 请求适配器里的数据
-     * @param url
-     * @param gc_name
-     */
-    @Override
-    public void getAbapterUrl(String url, String gc_id,String gc_name) {
-
-        Observable<DateGridBean> sortRight = RetroFactorySort.getInstance().getSortGrid(url,gc_id,gc_name);
-        sortRight.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<DateGridBean>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(DateGridBean dateGridBean) {
-                        gridList = dateGridBean.getDatas().getClass_list();
-                        onfinish.onFinishGrid(gridList);
                     }
                 });
     }

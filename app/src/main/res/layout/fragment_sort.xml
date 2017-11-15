@@ -11,12 +11,12 @@
             android:id="@+id/type_rvleft"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="4"/>
+            android:layout_weight="5"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/type_rvright"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginLeft="50dp"/>
+            android:layout_marginLeft="20dp"/>
     </LinearLayout>
 </LinearLayout>

@@ -58,7 +58,7 @@ public class Fragment_sort extends Fragment implements ISortView{
         //得到屏幕宽
         int width = display.getWidth();
         //将RecyclerView宽设置为屏幕宽的1/5
-        params.width = width * 1 / 5;
+        params.width = width * 1 / 4;
         rv_left.setLayoutParams(params);
         //得到RecyclerView布局管理器
         LinearLayoutManager leftLayoutManager = new LinearLayoutManager(getActivity());
