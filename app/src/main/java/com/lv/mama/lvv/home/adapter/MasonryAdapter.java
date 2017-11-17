@@ -21,7 +21,9 @@ import butterknife.ButterKnife;
  * Created by 卢总 on 2017/10/13.
  */
 
-public class MasonryAdapter extends RecyclerView.Adapter<MasonryAdapter.MasonryView> {
+public class MasonryAdapter extends RecyclerView.Adapter<MasonryAdapter.MasonryView>{
+
+
 
 
     /**
@@ -107,5 +109,6 @@ public class MasonryAdapter extends RecyclerView.Adapter<MasonryAdapter.MasonryV
         }
 
     }
+
 
 }

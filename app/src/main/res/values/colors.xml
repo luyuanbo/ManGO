@@ -17,4 +17,5 @@
     <color name="colorPrice">#FF7001</color>
     <!-- 亮粉红色 -->
     <color name="orange">#fd7903</color>
+    <color name="red">#FFFD0314</color>
 </resources>

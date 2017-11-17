@@ -14,6 +14,7 @@ import com.lv.mama.lvv.R;
 import com.lv.mama.lvv.bean.HomeBean;
 import com.lv.mama.lvv.utils.GlideImageLoader;
 import com.youth.banner.Banner;
+import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,25 +97,64 @@ public class XRAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             //设置banner图片加载器
             ((ViewHolderA) holder).mbanner.setImageLoader(new GlideImageLoader());
             ((ViewHolderA) holder).mbanner.setImages(mlist);
+            ((ViewHolderA) holder).mbanner.setOnBannerListener(new OnBannerListener() {
+                @Override
+                public void OnBannerClick(int position) {
+
+
+                }
+            });
             ((ViewHolderA) holder).mbanner.start();
 
         } else if (holder instanceof ViewHolderB) {
 
             //给子布局的控件传值
             ((ViewHolderB) holder).myImageView.setImageURI(data.getAd5().get(0).getImage());
+            ((ViewHolderB) holder).myImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                }
+            });
             ((ViewHolderB) holder).homeClassifiledText1.setText(data.getAd5().get(0).getTitle());
             ((ViewHolderB) holder).myImageView2.setImageURI(data.getAd5().get(1).getImage());
+            ((ViewHolderB) holder).myImageView2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                }
+            });
             ((ViewHolderB) holder).homeClassifiledText2.setText(data.getAd5().get(1).getTitle());
             ((ViewHolderB) holder).myImageView3.setImageURI(data.getAd5().get(2).getImage());
+            ((ViewHolderB) holder).myImageView3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                }
+            });
             ((ViewHolderB) holder).homeClassifiledText3.setText(data.getAd5().get(2).getTitle());
             ((ViewHolderB) holder).myImageView4.setImageURI(data.getAd5().get(3).getImage());
+            ((ViewHolderB) holder).myImageView4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                }
+            });
             ((ViewHolderB) holder).homeClassifiledText4.setText(data.getAd5().get(3).getTitle());
+
+
         } else if (holder instanceof ViewHolderC) {
 
             ((ViewHolderC) holder).countdownView.start(555555555);
             ((ViewHolderC) holder).tvc.setText("热门活动");
             ((ViewHolderC) holder).homeQgImg.setImageURI(data.getActivityInfo().getActivityInfoList().get(0).getActivityImg());
+            ((ViewHolderC) holder).homeQgImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                }
+            });
             ((ViewHolderC) holder).homeQgImg2.setImageURI(data.getActivityInfo().getActivityInfoList().get(1).getActivityImg());
+            ((ViewHolderC) holder).homeQgImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                }
+            });
 
         } else if (holder instanceof ViewHolderD) {
             bannerlist = new ArrayList<>();
@@ -123,7 +163,6 @@ public class XRAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
             ((ViewHolderD) holder).reItemdText.setText("热门专题");
             ((ViewHolderD) holder).itemdMybanner.setImageLoader(new GlideImageLoader());
-
             ((ViewHolderD) holder).itemdMybanner.setImages(bannerlist);
             ((ViewHolderD) holder).itemdMybanner.start();
 
@@ -134,10 +173,21 @@ public class XRAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             // 设置item动画
             ((ViewHolderE) holder).recyclerView.setItemAnimator(new DefaultItemAnimator());
             //设置item之间的间隔
-            SpacesItemDecoration decoration=new SpacesItemDecoration(16);
-           ((ViewHolderE) holder).recyclerView.addItemDecoration(decoration);
+            SpacesItemDecoration decoration = new SpacesItemDecoration(16);
+            ((ViewHolderE) holder).recyclerView.addItemDecoration(decoration);
             List<HomeBean.DataBean.DefaultGoodsListBean> defaultGoodsList = data.getDefaultGoodsList();
-            ((ViewHolderE) holder).recyclerView.setAdapter( new MasonryAdapter(mcontext,defaultGoodsList));
+            MasonryAdapter masonryAdapter = new MasonryAdapter(mcontext, defaultGoodsList);
+            masonryAdapter.setOnItemClickLitener(new MasonryAdapter.OnItemClickLitener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                }
+
+                @Override
+                public void onItemLongClick(View view, int position) {
+
+                }
+            });
+            ((ViewHolderE) holder).recyclerView.setAdapter(masonryAdapter);
 
         }
 

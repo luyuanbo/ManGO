@@ -7,5 +7,5 @@ package com.lv.mama.lvv.utils;
 public class Api {
     public static final String TYPE_LOGIN = "http://120.27.23.105/";
     public static final String TYPE_HOME="http://result.eolinker.com/";
-    public static final String TYPE_SORT="http://169.254.172.202/";
+    public static final String TYPE_SORT="http://120.27.23.105/";
 }

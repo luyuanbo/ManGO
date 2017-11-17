@@ -44,9 +44,6 @@ public class Fragment_Home extends Fragment implements IHomeView {
         //加布局管理器
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-
-
-
         return view;
     }
 

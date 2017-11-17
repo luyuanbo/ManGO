@@ -3,15 +3,13 @@ package com.lv.mama.lvv.utils;
 
 import com.lv.mama.lvv.bean.HomeBean;
 import com.lv.mama.lvv.bean.LoginBean;
-import com.lv.mama.lvv.sort.bean.DataleftBean;
-import com.lv.mama.lvv.sort.bean.DatarightBean;
-import com.lv.mama.lvv.sort.bean.DateGridBean;
+import com.lv.mama.lvv.sort.bean.KindBean;
+import com.lv.mama.lvv.sort.bean.RightBean;
 
 import java.util.Map;
 
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 import rx.Observable;
@@ -31,12 +29,9 @@ public interface ApiServer {
     @POST
     Observable<LoginBean> getLogin(@Url String url, @QueryMap Map<String,String> map);
 
-    @GET
-    Observable<DataleftBean> getSortLeftBean(@Url String url);
+    @GET("product/getCatagory")
+    Observable<KindBean> getkd();
+    @POST
+    Observable<RightBean> getkdRight(@Url String str, @QueryMap Map<String,String> map);
 
-    @GET
-    Observable<DatarightBean> getSortRight(@Url String url, @Query("gc_id") String gc_id);
-
-    @GET
-    Observable<DateGridBean> getSortGrid(@Url String url);
 }
