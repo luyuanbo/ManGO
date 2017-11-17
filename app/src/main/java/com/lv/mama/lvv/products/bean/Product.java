@@ -1,27 +1,24 @@
-package com.lv.mama.lvv.details.bean;
+package com.lv.mama.lvv.products.bean;
 
 /**
  * Created by 卢总 on 2017/11/17.
  */
 
-public class product {
-    private int pscid;
+public class Product {
+    private String pscid;
 
-    public product(int pscid) {
+    public Product(String pscid) {
         this.pscid = pscid;
     }
 
-    public int getPscid() {
+    public String getPscid() {
         return pscid;
     }
 
-    public void setPscid(int pscid) {
+    public void setPscid(String pscid) {
         this.pscid = pscid;
     }
 
-    public product() {
-        super();
-    }
 
     @Override
     public String toString() {

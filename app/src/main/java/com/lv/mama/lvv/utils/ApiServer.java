@@ -3,6 +3,9 @@ package com.lv.mama.lvv.utils;
 
 import com.lv.mama.lvv.bean.HomeBean;
 import com.lv.mama.lvv.bean.LoginBean;
+import com.lv.mama.lvv.cart.Bean.CartBean;
+import com.lv.mama.lvv.products.bean.DetailsBean;
+import com.lv.mama.lvv.products.bean.ProductsBean;
 import com.lv.mama.lvv.sort.bean.KindBean;
 import com.lv.mama.lvv.sort.bean.RightBean;
 
@@ -33,5 +36,14 @@ public interface ApiServer {
     Observable<KindBean> getkd();
     @POST
     Observable<RightBean> getkdRight(@Url String str, @QueryMap Map<String,String> map);
+
+    @POST
+    Observable<ProductsBean> getProducts(@Url String url, @QueryMap Map<String,String> map);
+
+
+    @POST
+    Observable<DetailsBean> getDetails(@Url String url, @QueryMap Map<String,String> map);
+    @POST
+    Observable<CartBean> getCart(@Url String url, @QueryMap Map<String,String> map);
 
 }

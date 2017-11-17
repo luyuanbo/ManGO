@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.lv.mama.lvv.R;
-import com.lv.mama.lvv.details.DetailsActivity;
-import com.lv.mama.lvv.details.bean.product;
+import com.lv.mama.lvv.products.ProductsActivity;
+import com.lv.mama.lvv.products.bean.Product;
 import com.lv.mama.lvv.sort.bean.RightBean;
 
 import org.greenrobot.eventbus.EventBus;
@@ -61,12 +61,13 @@ public class GridAdapter extends BaseAdapter{
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context, DetailsActivity.class));
-                int pscid = data.get(position).getPscid();
 
+
+                int pscid = data.get(position).getPscid();
                 Toast.makeText(context,pscid+"", Toast.LENGTH_SHORT).show();
                 //事件发布者发布事件
-                EventBus.getDefault().postSticky(new product(pscid));
+                EventBus.getDefault().postSticky(new Product(pscid+""));
+                context.startActivity(new Intent(context, ProductsActivity.class));
 
             }
         });

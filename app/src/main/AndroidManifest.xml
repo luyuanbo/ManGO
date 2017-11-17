@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
+        android:configChanges="orientation|keyboardHidden"
         android:name=".system.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,15 +22,19 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"
+                    android:screenOrientation="sensorLandscape"
+                    android:configChanges="orientation|keyboardHidden"
+                    />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".mine.view.LoginActivity" />
         <activity android:name=".mine.view.RegisterActivity" />
-        <activity android:name=".detail.view.DetailsActivity" />
-        <activity android:name=".details.DetailsActivity"></activity>
+
+        <activity android:name=".products.DetailsActivity" />
+        <activity android:name=".products.ProductsActivity"></activity>
     </application>
 
 </manifest>
