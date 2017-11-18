@@ -4,6 +4,7 @@ package com.lv.mama.lvv.utils;
 import com.lv.mama.lvv.bean.HomeBean;
 import com.lv.mama.lvv.bean.LoginBean;
 import com.lv.mama.lvv.cart.Bean.CartBean;
+import com.lv.mama.lvv.cart.Bean.Select;
 import com.lv.mama.lvv.products.bean.DetailsBean;
 import com.lv.mama.lvv.products.bean.ProductsBean;
 import com.lv.mama.lvv.sort.bean.KindBean;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 import rx.Observable;
@@ -45,5 +47,9 @@ public interface ApiServer {
     Observable<DetailsBean> getDetails(@Url String url, @QueryMap Map<String,String> map);
     @POST
     Observable<CartBean> getCart(@Url String url, @QueryMap Map<String,String> map);
+    //查询购物车
+    @POST("product/getCarts")
+    Observable<Select> getcartgoods(@Query("uid") String uid);
+
 
 }
