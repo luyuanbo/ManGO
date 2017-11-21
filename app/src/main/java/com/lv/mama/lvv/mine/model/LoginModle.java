@@ -1,9 +1,7 @@
 package com.lv.mama.lvv.mine.model;
 
 import com.lv.mama.lvv.bean.LoginBean;
-import com.lv.mama.lvv.system.MyApplication;
 import com.lv.mama.lvv.utils.RetroFactoryPost;
-import com.lv.mama.lvv.utils.SPUtils;
 
 import java.util.HashMap;
 
@@ -17,12 +15,10 @@ import rx.schedulers.Schedulers;
 
 public class LoginModle implements ILoginModle {
 
-    private String code;
     public Onfinish onfinish;
-    private String msg;
 
     public interface Onfinish{
-        void Loginfinish(String code,String msg);
+        void Loginfinish(LoginBean loginBean);
     }
 
     public void setOnfinish(Onfinish onfinish) {
@@ -54,13 +50,8 @@ public class LoginModle implements ILoginModle {
                     @Override
                     public void onNext(LoginBean loginBean) {
 
-                        code = loginBean.getCode();
-                        int uid = loginBean.getData().getUid();
-                        if (code=="0"){
-                            SPUtils.put(MyApplication.getmContext(),"uid",uid+"");
-                        }
-                        msg = loginBean.getMsg();
-                        onfinish.Loginfinish(code,msg);
+
+                        onfinish.Loginfinish(loginBean);
                     }
                 });
 

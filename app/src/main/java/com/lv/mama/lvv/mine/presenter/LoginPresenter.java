@@ -1,5 +1,6 @@
 package com.lv.mama.lvv.mine.presenter;
 
+import com.lv.mama.lvv.bean.LoginBean;
 import com.lv.mama.lvv.mine.model.LoginModle;
 import com.lv.mama.lvv.mine.view.ILoginView;
 
@@ -21,8 +22,10 @@ public class LoginPresenter implements LoginModle.Onfinish {
         loginModle.setOnfinish(this);
     }
 
+
+
     @Override
-    public void Loginfinish(String code,String msg) {
-        iLoginView.getState(code,msg);
+    public void Loginfinish(LoginBean loginBean) {
+        iLoginView.getState(loginBean);
     }
 }

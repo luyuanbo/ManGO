@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.lv.mama.lvv.R;
+import com.lv.mama.lvv.bean.LoginBean;
+import com.lv.mama.lvv.mine.presenter.LoginPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,21 +42,26 @@ public class RegisterActivity extends AppCompatActivity implements ILoginView{
         String repass = rePassWord.getText().toString().trim();
         String repass2 = rePassWord2.getText().toString().trim();
         String reemail = reEmail.getText().toString().trim();
+        LoginPresenter loginPresenter = new LoginPresenter(this);
+        loginPresenter.getUrl(url,reUname,repass);
         if ("".equals(reUname) || "".equals(repass)||"".equals(repass2)||"".equals(reemail)) {
             Toast.makeText(RegisterActivity.this, "不能为空哦~", Toast.LENGTH_SHORT).show();
         } else {
             startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+            Toast.makeText(RegisterActivity.this, "成功了~", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     @Override
-    public void getState(String code,String msg) {
-        if ("0".equals(code)) {
-            Toast.makeText(RegisterActivity.this, msg, Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-            startActivity(intent);
-        } else {
+    public void getState(LoginBean loginBean) {
+        String code = loginBean.getCode();
+        String msg = loginBean.getMsg();
+        if("0".equals(code)){
+
+            startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+
+        }else{
             Toast.makeText(RegisterActivity.this, msg, Toast.LENGTH_SHORT).show();
         }
     }

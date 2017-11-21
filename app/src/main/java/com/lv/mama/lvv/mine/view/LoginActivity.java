@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.lv.mama.lvv.MainActivity;
 import com.lv.mama.lvv.R;
+import com.lv.mama.lvv.bean.LoginBean;
 import com.lv.mama.lvv.bean.StateBean;
 import com.lv.mama.lvv.mine.presenter.LoginPresenter;
 import com.lv.mama.lvv.utils.SPUtils;
@@ -62,6 +63,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
                     Toast.makeText(LoginActivity.this, "不能为空哦~", Toast.LENGTH_SHORT).show();
                 } else {
                    new LoginPresenter(this).getUrl(url, uname,pswd);
+
                 }
 
                 break;
@@ -69,13 +71,18 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     @Override
-    public void getState(String code,String msg) {
-
+    public void getState(LoginBean loginBean) {
+        String code = loginBean.getCode();
+        String msg = loginBean.getMsg();
         if("0".equals(code)){
-            startActivity(new Intent(LoginActivity.this,MainActivity.class));
             //事件发布者发布事件
             EventBus.getDefault().postSticky(new StateBean(uname));
             SPUtils.put(LoginActivity.this,"state",code);
+            int uid = loginBean.getData().getUid();
+            SPUtils.put(LoginActivity.this,"uid",""+uid);
+
+            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+
         }else{
             Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
         }

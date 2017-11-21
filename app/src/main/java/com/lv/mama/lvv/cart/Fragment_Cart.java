@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,12 +87,12 @@ public class Fragment_Cart extends Fragment implements ISelectView, ShopcartAdap
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cart, null);
         unbinder = ButterKnife.bind(this, view);
-        SelectPresenter selectPresenter = new SelectPresenter(this);
-        int uid = (int) SPUtils.get(MyApplication.mContext,"uid",1035);
-        selectPresenter.getdate(uid + "");
+
 
         return view;
     }
+
+
     private void initEvents() {
         selva = new ShopcartAdapter(groups, children, getActivity());
         selva.setCheckInterface(this);// 关键步骤1,设置复选框接口
@@ -400,6 +401,11 @@ public class Fragment_Cart extends Fragment implements ISelectView, ShopcartAdap
     public void onResume() {
         super.onResume();
         setCartNum();
+        SelectPresenter selectPresenter = new SelectPresenter(this);
+        Map<String, ?> all = SPUtils.getAll(MyApplication.getmContext());
+        String uid = (String) all.get("uid");
+        Log.d("uid+++++++++++++++", "uid++: "+uid);
+        selectPresenter.getdate(uid);
     }
 
     @Override
